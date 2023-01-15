@@ -1,0 +1,28 @@
+﻿<table>
+    <tr>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>@user.Role</td>
+            <td>
+                <form asp-controller="Admin" asp-action="AddRole" method="post">
+                    <input type="hidden" name="userId" value="@user.Id" />
+                    <input type="hidden" name="userRole" value="Admin" />
+                    <input type="submit" value="Add Admin" class="btn btn-success" />
+                </form>
+            </td>
+                            <td>
+                <form asp-controller="Admin" asp-action="RemoveRole" method="post">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <input type="hidden" name="userRole" value="Admin" />
+                        <input type="submit" value="Remove Admin" class="btn btn-danger" />
+                    </form>
+                </td>
+        </tr>
+    }
+</table>
